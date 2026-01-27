@@ -1,0 +1,36 @@
+# --- secrets ---
+gradle.properties
+local.properties
+*.gpg
+*.asc
+secring.gpg
+
+# --- GRADLE & KOTLIN ---
+.gradle
+.kotlin
+**/build/
+.configuration-cache/
+.konan/
+
+# --- IDE (Android Studio / IntelliJ) ---
+.idea
+*.iml
+*.ipr
+*.iws
+
+# --- iOS / XCODE ---
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings
+DerivedData/
+xcuserdata/
+
+# --- OTHER ---
+.DS_Store
+node_modules/
+captures
+.externalNativeBuild
+.cxx
