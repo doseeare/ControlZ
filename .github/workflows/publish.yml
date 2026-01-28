@@ -33,7 +33,7 @@ jobs:
 
       - name: Publish to Maven Central
         run: |
-          ./gradlew publishAllPublicationsToMavenCentralRepository \
+          ./gradlew publishAndReleaseToMavenCentral --no-configuration-cache \
             -PmavenCentralUsername="${{ secrets.MAVEN_CENTRAL_USERNAME }}" \
             -PmavenCentralPassword="${{ secrets.MAVEN_CENTRAL_TOKEN }}" \
             -Psigning.keyId="53D78D1E" \
