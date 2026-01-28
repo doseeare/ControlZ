@@ -12,7 +12,7 @@ plugins {
 }
 
 group = "io.github.doseeare.controlz"
-version = "0.0.3"
+version = "0.1.0"
 
 kotlin {
 	jvm()
