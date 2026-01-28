@@ -39,6 +39,8 @@ jobs:
             -Psigning.keyId="53D78D1E" \
             -Psigning.password="${{ secrets.GPG_PASSWORD }}" \
             -Psigning.secretKeyRingFile="/Users/runner/secring.gpg"
+            -Pkotlin.mpp.unstable.nowarn=true
+
         env:
 
           MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
