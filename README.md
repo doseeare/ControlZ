@@ -43,6 +43,30 @@ https://github.com/user-attachments/assets/04d78f9a-1cc0-4251-b403-766ffc0ef639
 
 ---
 
+### 1) Add debug-panel to host screen
+```kotlin
+TimeTravelPanelDrawer(enabled = true) {
+  //Your app content
+  }
+```
+
+### 2) Register state in ViewModel
+
+In your `ViewModel` (or any presentation layer), register your `StateFlow` in `TimeTravelRegistry`.
+
+```kotlin
+TimeTravelRegistry.register(
+    scope = viewModelScope,
+    stateFlow = state,
+    enabled = true, // usually BuildConfig.DEBUG
+    onChanged = { travelState ->
+        updateState { travelState }
+    }
+)
+```
+
+---
+
 ## 📦 Installation
 Add the dependency to your `build.gradle`:
 
