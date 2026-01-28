@@ -1,10 +1,6 @@
 import com.vanniktech.maven.publish.JavadocJar
 import com.vanniktech.maven.publish.KotlinMultiplatform
 import com.vanniktech.maven.publish.SonatypeHost
-import org.gradle.deployment.internal.Deployment
-import org.jetbrains.kotlin.gradle.dsl.KotlinJvmCompilerOptions
-import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
 	alias(libs.plugins.kotlinMultiplatform)
@@ -15,8 +11,8 @@ plugins {
 	alias(libs.plugins.vanniktech.mavenPublish)
 }
 
-group = "io.github.doseeare.controlz_timetravel"
-version = "0.0.1"
+group = "io.github.doseeare.controlz"
+version = "0.0.2"
 
 kotlin {
 	jvm()
@@ -89,7 +85,7 @@ kotlin {
 }
 
 android {
-	namespace = "io.github.doseeare.controlz_timetravel"
+	namespace = "io.github.doseeare.controlz"
 	compileSdk = libs.versions.android.compileSdk.get().toInt()
 	
 	defaultConfig {
@@ -119,12 +115,12 @@ mavenPublishing {
 		)
 	)
 	
-	publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+	publishToMavenCentral(host = SonatypeHost.CENTRAL_PORTAL, automaticRelease = false)
 	signAllPublications()
 	
 	coordinates(
-		groupId = "io.github.doseeare.controlz_timetravel",
-		artifactId = "controlz-timetravel",
+		groupId = "io.github.doseeare.controlz",
+		artifactId = "timetravel",
 		version = version.toString()
 	)
 	pom {

@@ -1,0 +1,61 @@
+name: Publish to Maven Central
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Validate Gradle Wrapper
+        uses: gradle/actions/wrapper-validation@v3
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.gradle/caches
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+
+      - name: Decode GPG Key
+        run: |
+          echo "${{ secrets.GPG_SECRET_KEY }}" | base64 --decode > ~/secring.gpg
+
+      - name: Publish to Maven Central
+        run: |
+          ./gradlew publishAllPublicationsToMavenCentralRepository \
+            -PmavenCentralUsername="${{ secrets.MAVEN_CENTRAL_USERNAME }}" \
+            -PmavenCentralPassword="${{ secrets.MAVEN_CENTRAL_TOKEN }}" \
+            -Psigning.keyId="53D78D1E" \
+            -Psigning.password="${{ secrets.GPG_PASSWORD }}" \
+            -Psigning.secretKeyRingFile="/Users/runner/secring.gpg"
+        env:
+
+          MAVEN_CENTRAL_USERNAME: ${{ secrets.MAVEN_CENTRAL_USERNAME }}
+          MAVEN_CENTRAL_TOKEN: ${{ secrets.MAVEN_CENTRAL_TOKEN }}
+
+      - name: Prepare iOS Framework for Release
+        run: |
+          ./gradlew assembleControlz-timetravelKitReleaseXCFramework
+          cd controlz-timetravel/build/XCFrameworks/release
+          zip -r ../../../controlz-timetravelKit.xcframework.zip controlz-timetravelKit.xcframework
+          cd ../../../
+
+      - name: Upload Assets to GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            controlz-timetravelKit.xcframework.zip
+            controlz-timetravel/build/libs/*.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
