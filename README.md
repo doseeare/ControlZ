@@ -22,12 +22,14 @@ Navigate freely through your application's state history — step backward, forw
 
 
 https://github.com/user-attachments/assets/9c845ebb-2239-421e-b1b8-711a279702c7
+
 ---
 
 ### 🛠 Inject state from JSON
 Load and inject a custom state from JSON to instantly reproduce edge cases and complex scenarios.
 
 https://github.com/user-attachments/assets/04d78f9a-1cc0-4251-b403-766ffc0ef639
+
 ---
 
 ## 📦 Installation
