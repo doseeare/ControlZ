@@ -1,5 +1,12 @@
 
-<img width="1024" height="1024" alt="ctrlz_icon" src="https://github.com/user-attachments/assets/ad4baae8-5f33-44df-8e23-66db73480ce2" />
+<p align="center">
+  <img
+    src="https://github.com/user-attachments/assets/ad4baae8-5f33-44df-8e23-66db73480ce2"
+    width="120"
+    height="120"
+    alt="ctrlz_icon"
+  />
+</p>
 
 
 # ControlZ TimeTravel
