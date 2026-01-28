@@ -20,14 +20,14 @@ Perfect for debugging, reproducing bugs, and exploring how your app behaves in d
 ### ⏪ Time travel between states
 Navigate freely through your application's state history — step backward, forward, or jump to any moment in time.
 
-https://github.com/doseeare/ControlZ/demo_media/tt_demo_1.mp4
+![TimeTravel demo](demo_media/tt_demo_1.mp4)
 
 ---
 
 ### 🛠 Inject state from JSON
 Load and inject a custom state from JSON to instantly reproduce edge cases and complex scenarios.
 
-https://github.com/doseeare/ControlZ/demo_media/tt_demo_2.mp4
+![TimeTravel demo](demo_media/tt_demo_2.mp4)
 
 ---
 
